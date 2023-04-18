@@ -36,6 +36,6 @@
 <h1>Recently asked questions</h1>
 
 {#each questions as {text}}
-    <div>{@html text}</div>
+    <div>{text}</div>
 {/each}
 
