@@ -1,10 +1,14 @@
-FROM python:3.10-alpine
-# used with live-reload so .pyc isn't stored on host
-ENV PYTHONPYCACHEPREFIX=/tmp
-#/
-WORKDIR /app
-EXPOSE 5000
-COPY . .
-RUN pip install pipenv
-RUN pipenv install --deploy --system
-ENTRYPOINT ["python", "/app/src/main.py"]
+FROM python:3.9
+
+RUN mkdir /proj
+COPY ./ /proj
+WORKDIR /proj
+
+ENV PYTHONPATH=${PYTHONPATH}:${PWD}
+
+RUN pip3 install poetry
+RUN poetry config virtualenvs.create false 
+RUN poetry config experimental.new-installer false
+RUN poetry install --no-dev
+
+WORKDIR /

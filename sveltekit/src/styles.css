@@ -1,0 +1,100 @@
+:root {
+    --background: #03001C;
+    --foreground: #d1f0ed;
+  
+  
+    --color0: #2a3246;
+    --color1: #73ddbd;
+    --color2: #B6EADA;
+    --color3: #53dfd3;
+    --color4: #00ccbb;
+}
+  
+  *, ::after, ::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+html,
+body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: left;
+}
+  
+.container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 1em;
+    display: grid;
+}
+  
+a {
+    text-decoration: none;
+    color: var(--color3);
+}
+  
+a:hover {
+    text-decoration: none;
+    color: var(--color4);
+}
+  
+h1 {
+    color: var(--color1);
+    font-size: 2.5rem;
+}
+  
+h2 {
+    color: var(--color2);
+    font-size: 2rem;
+}
+  
+h3, h4, h5, h6 {
+    color: var(--color3);
+}
+  
+h3 {
+    font-size: 1.75rem;
+}
+  
+h4 {
+    font-size: 1.5rem;
+}
+  
+h5 {
+    font-size: 1.25rem;
+}
+  
+h6 {
+    font-size: 1rem;
+}
+  
+hr {
+    border-color: var(--color1);
+    margin: 0.5em 0;
+    opacity: 0.5;
+}
+  
+p, ul, ol, dl {
+    margin-bottom: 1em;
+}
+  
+ul, ol {
+    padding-inline-start: 40px;
+}
+  
+li {
+    margin-bottom: 10px;
+}
+  
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5em;
+    font-weight: 500;
+    line-height: 1.2;
+}
+  

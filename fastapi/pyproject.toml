@@ -1,0 +1,37 @@
+[tool.poetry]
+name = "ncs_vurn"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+httpx = "^0.23.0"
+pydantic = "^1.9.0"
+result = "^0.7.0"
+fastapi = "^0.88.0"
+mypy = "^0.942"
+SQLAlchemy = {extras = ["asyncio", "mypy"], version = "^1.4.35"}
+dependency-injector = "^4.39.1"
+asyncpg = "^0.25.0"
+loguru = "^0.6.0"
+alembic = "^1.7.7"
+hypercorn = "^0.14.0"
+watchgod = "^0.8.2"
+watchfiles = "^0.18.1"
+prometheus-fastapi-instrumentator = "^5.7.1"
+passlib = "^1.7.4"
+PyYAML = "^6.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+types-passlib = "^1.7.5"
+types-python-jose = "^3.3.0"
+types-PyYAML = "^6.0.7"
+psycopg2-binary = "2.9.2"
+arq = "^0.25.0"
+python-multipart = "^0.0.6"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

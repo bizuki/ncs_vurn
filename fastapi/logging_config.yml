@@ -1,0 +1,7 @@
+logger:
+  path: /var/logs
+  filename: antispoofing.log
+  level: info
+  rotation: 10 days
+  retention: 1 months
+  format: "<level>{level: <8}</level> | <green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> - <cyan>{name}</cyan> - <level>{message}</level>"
