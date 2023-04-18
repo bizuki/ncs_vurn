@@ -1,4 +1,4 @@
-from sqlalchemy import select, delete, text
+from sqlalchemy import select, delete, text, update
 
 from ...base_classes import ApplicationCRUD
 from . import schema
@@ -29,14 +29,14 @@ class UserCRUD(ApplicationCRUD):
         return schema.User.from_orm(found.User)
 
     async def get_by_email(self, email: str):
-        stmt = text(f'select * from users where email = \'{email}\'')
+        stmt = (select(User).where(User.email == email))
         res = await self.execute(stmt)
         found = res.first()
 
         if not found:
             return None
 
-        return schema.User.from_orm(found)
+        return schema.User.from_orm(found.User)
 
     async def delete_by_id(self, id: int) -> int:
         stmt = (delete(User).where(User.id == id))
@@ -50,5 +50,6 @@ class UserCRUD(ApplicationCRUD):
     
     async def transfer(self, source: str, target: str, sum: float):
         async with self.session_factory() as session:
-            await session.execute(text(f'update users set balance=balance - {sum} where email = \'{source}\''))
-            await session.execute(text(f'update users set balance=balance + {sum} where email = \'{target}\''))
+            update(User).where(User.email == source).values(balance=User.balance - sum)
+            await session.execute(update(User).where(User.email == source).values(balance=User.balance - sum))
+            await session.execute(update(User).where(User.email == target).values(balance=User.balance + sum))
