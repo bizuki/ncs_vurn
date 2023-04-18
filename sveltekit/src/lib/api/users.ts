@@ -13,10 +13,10 @@ export const fetchUserInfo = async (token: string, id?: number) : Promise<UserIn
     return response.data;
 };
 
-export const fetchTestUserInfo = async (email: string) : Promise<UserInfo> => {
+export const fetchTestUserInfo = async () : Promise<UserInfo> => {
     let client = makeClient();
     return await getResponse(async () => {
-        let response = await client.get(`users/test/${email}`);
+        let response = await client.get(`users/test`);
         return response.data;
     })
 };

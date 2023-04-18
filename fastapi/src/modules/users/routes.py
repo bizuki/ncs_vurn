@@ -26,6 +26,17 @@ async def get_info_about_me(
     return res
 
 
+@router.get('/test')
+@handled_result_async
+@inject
+async def get_test_info(
+    service: UserService = Depends(Provide[Container.user_service]),
+):
+    async with service() as s:
+        res = await s.get_by_email('test@test.com')
+    return res
+
+
 @router.get('/{id}', response_model=schema.UserDTO)
 @handled_result_async
 @inject
@@ -50,16 +61,4 @@ async def transfer_money(
 ):
     async with service() as s:
         res = await s.transfer_money(user, to, sum)
-    return res
-
-
-@router.get('/test/{email}')
-@handled_result_async
-@inject
-async def get_test_info(
-    email: str,
-    service: UserService = Depends(Provide[Container.user_service]),
-):
-    async with service() as s:
-        res = await s.get_by_email(email)
     return res

@@ -11,6 +11,9 @@ export const getResponse = async (func) => {
         return await func();
     } catch (error) {
         const { response } = error;
+        if (!browser) {
+            throw error;
+        }
         if (response.data.context) {
             alert(response.data.context?.message);
         } else {
