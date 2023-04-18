@@ -31,6 +31,9 @@ class UserService(ApplicationService):
         return Ok(schema.UserDTO(**user.dict()))
     
     async def transfer_money(self, user: schema.User, target: str, sum: float):
+        if sum < 0:
+            return Err(BadRequestException(context={'message': 'Sum of transfer can\'t be less than 0'}))
+        
         if user.balance < sum:
             return Err(BadRequestException(context={'message': 'Not enough money'}))
         
